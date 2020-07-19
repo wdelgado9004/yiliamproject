@@ -2,11 +2,12 @@
 
 <?php
   require 'includes/header.php';
-  $pageTitle = 'New Arrivals';
+  $pageTitle = 'Bestsellers';
 
   ?>
 <<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">New Arrivals</h1>
+  <h1 class="display-4">Bestsellers
+  </h1>
  
 </div>
 <!--Carousel Wrapper-->
@@ -30,25 +31,25 @@
     <div class=" carousel-item active text-center">
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals1.jpg"
+        <a href="images/bestsellers1.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals1.jpg"
+          <img src="images/bestsellers1.jpeg"
             class="img-fluid">
            
         </a>
       </figure>
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals3.jpg"
+        <a href="images/bestsellers2.jpg"
           data-size="1600x1067">
-          <img src="images/new_arrivals3.jpg"
+          <img src="images/bestsellers2.jpg"
             class="img-fluid">
         </a>
       </figure>
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals2.jpg"
+        <a href="images/bestsellers4.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals2.jpg"
+          <img src="images/bestsellers4.jpeg"
             class="img-fluid">
         </a>
       </figure>
@@ -56,9 +57,9 @@
      
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals4.jpg"
+        <a href="images/bestsellers5.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals4.jpg"
+          <img src="images/bestsellers5.jpeg"
             class="img-fluid">
         </a>
       </figure>
@@ -71,25 +72,25 @@
     <div class="carousel-item text-center">
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals5.jpg"
+        <a href="images/bestsellers6.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals5.jpg"
+          <img src="images/bestsellers6.jpeg"
             class="img-fluid">
         </a>
       </figure>
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals6.jpeg"
+        <a href="images/bestsellers7.jpg"
           data-size="1600x1067">
-          <img src="images/new_arrivals6.jpeg"
+          <img src="images/bestsellers7.jpg"
             class="img-fluid">
         </a>
       </figure>
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals7.jpeg"
+        <a href="images/bestsellers8.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals7.jpeg"
+          <img src="images/bestsellers8.jpeg"
             class="img-fluid">
         </a>
       </figure>

@@ -2,11 +2,11 @@
 
 <?php
   require 'includes/header.php';
-  $pageTitle = 'New Arrivals';
+  $pageTitle = 'Food';
 
   ?>
 <<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">New Arrivals</h1>
+  <h1 class="display-4">Food</h1>
  
 </div>
 <!--Carousel Wrapper-->
@@ -30,25 +30,25 @@
     <div class=" carousel-item active text-center">
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals1.jpg"
+        <a href="images/food1.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals1.jpg"
+          <img src="images/food1.jpeg"
             class="img-fluid">
            
         </a>
       </figure>
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals3.jpg"
+        <a href="images/food2.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals3.jpg"
+          <img src="images/food2.jpeg"
             class="img-fluid">
         </a>
       </figure>
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals2.jpg"
+        <a href="images/food3.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals2.jpg"
+          <img src="images/food3.jpeg"
             class="img-fluid">
         </a>
       </figure>
@@ -56,9 +56,9 @@
      
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals4.jpg"
+        <a href="images/food4.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals4.jpg"
+          <img src="images/food4.jpeg"
             class="img-fluid">
         </a>
       </figure>
@@ -71,33 +71,33 @@
     <div class="carousel-item text-center">
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals5.jpg"
+        <a href="images/food5.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals5.jpg"
+          <img src="images/food5.jpeg"
             class="img-fluid">
         </a>
       </figure>
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals6.jpeg"
+        <a href="images/food6.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals6.jpeg"
+          <img src="images/food6.jpeg"
             class="img-fluid">
         </a>
       </figure>
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals7.jpeg"
+        <a href="images/food7.jpeg"
           data-size="1600x1067">
-          <img src="images/new_arrivals7.jpeg"
+          <img src="images/food.jpeg"
             class="img-fluid">
         </a>
       </figure>
 
       <figure class="col-md-4 d-md-inline-block">
-        <a href="images/new_arrivals8.jpeg"
+        <a href="images/food8.jpeg"
           data-size="1600x1067">
-          <img src= "images/new_arrivals8.jpeg"
+          <img src= "images/food8.jpeg"
             class="img-fluid">
         </a>
       </figure>
