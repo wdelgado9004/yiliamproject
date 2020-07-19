@@ -34,49 +34,64 @@
     }
   }
   
-  $pageTitleTag = empty($pageTitle)
-              ? 'The Poet Tree Club'
-              : $pageTitle . ' | The Poet Tree Club';
-
-  $pathStart = $pathStart ?? '';
+ 
 ?>
-<!DOCTYPE HTML>
+
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:300,400">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" crossorigin="anonymous"
-  href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-  integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU">
-<link rel="stylesheet" href="<?= $pathStart ?>../../../static/styles/normalize.css">
-<link rel="stylesheet" href="<?= $pathStart ?>../../../static/styles/styles.css">
-<script src="<?= $pathStart ?>../../../static/scripts/scripts.js"></script>
-<title><?= $pageTitleTag ?></title>
-</head>
-<body>
-<header>
-  <nav id="main-nav">
-    <!-- Bar icon for mobile menu -->
-    <div id="mobile-menu-icon">
-      <i class="fa fa-bars"></i>
-    </div>
-    <ul>
-      <li><a href="<?= $pathStart ?>index.php">Home</a></li>
-      <li><a href="<?= $pathStart ?>poems.php">Poems</a></li>
-      <li><a href="<?= $pathStart ?>poem-submit.php">Submit Poem</a></li>
-      <?php if (isset($_SESSION['user-id'])) { ?>
-        <li><a href="<?= $pathStart ?>my-account.php">My Account</a></li>
-      <?php } else { ?>
-        <li><a href="<?= $pathStart ?>login.php">Log in / Register</a></li>
-      <?php } ?>
-      <li><a href="<?= $pathStart ?>contact.php">Contact us</a></li>
-    </ul>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+  
+    <meta name="generator" content="Jekyll v4.0.1">
+   
+    
+<!-- Include Date Range Picker -->
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/pricing/">
+    <!-- FontAwsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/4.5/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/4.5/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/docs/4.5/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    
+    </style>
+   
+   
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Sandy's Pet Shop</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+      <a class="navbar-brand" href="#">
+          <img src="images/logo.jpg" alt="Logo" style="width:90px;" >
+        </a>
+      <a class="p-2 text-dark" href="index.php"><i class="fa fa-fw fa-home"></i>Home</a>
+      <a class="p-2 text-dark" href="about.php"><i class="fa fa-fw fa-book"></i>About Us</a>
+    <a class="p-2 text-dark" href="location.php"><i class="fa fa-fw fa-location-arrow"></i>Store Location</a>
+    <a class="p-2 text-dark" href="contact.php"><i class="fa fa-fw fa-mobile"></i>Contact Us</a>
+    <a class="p-2 text-dark" href="grooming.php"><i class="fa fa-fw fa-newspaper-o"></i>Grooming</a>
   </nav>
-  <h1>
-    <a href="<?= $pathStart ?>index.php">The Poet Tree Club</a>
-  </h1>
-  <h2>Set your poems free...</h2>
-</header>
+  </div>
