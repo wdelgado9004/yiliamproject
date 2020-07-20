@@ -1,64 +1,73 @@
 <?php
+  $pageTitle = 'New Grooming';
   require 'includes/header.php';
-  $pageTitle = 'Grooming';
 
   $f = [];
 
-  $f['FirstName'] = trim($_POST['FirstName'] ?? '');
-  $f['LastName'] = trim($_POST['LastName'] ?? '');
-  $f['Address'] = trim($_POST['Address'] ?? '');
-  $f['City'] = trim($_POST['City'] ?? '');
-  $f['State'] = trim($_POST['State'] ?? '');
-  $f['Zip'] = trim($_POST['Zip'] ?? '');
-  $f['PhoneNumber'] = trim($_POST['PhoneNumber'] ?? '');
-  $f['Message'] = trim($_POST['Message'] ?? '');
-  $f['Email'] = trim($_POST['Email'] ?? '');
-  $f['PetType'] = trim($_POST['PetType'] ?? '');
-  $f['Breed'] = trim($_POST['Breed'] ?? '');
-  $f['PetName'] = trim($_POST['PetName'] ?? '');
-  $f['NeuteredOrSpayed'] = trim($_POST['NeuteredOrSpayed'] ?? '');
-  $myTime = strtotime(trim($_POST['PetBirthday'] ?? '')); 
-  $f['PetBirthday'] = date("Y-m-d H:i:s", $myTime);
-  $f['placeholder'] = 'Be it poetry. Be it prose.
-  This is where your message goes.';
+  if($_SERVER["REQUEST_METHOD"] == "GET" and isset($_REQUEST['editId']) and $_REQUEST['editId']!=""){
+    $query = "SELECT * FROM grooming
+    WHERE GroomingID = ".$_REQUEST['editId'];
+    try {
+        $stmt = $db->prepare($query);
+        if (!$stmt->execute()) {
+          $errorMsg = $stmt->errorInfo()[2] . ": $query";
+          logError($errorMsg);
+        }
+        $row = $stmt->fetch();
+        $f['FirstName'] = trim($row['FirstName'] ?? '');
+        $f['LastName'] = trim($row['LastName'] ?? '');
+        $f['Address'] = trim($row['Address'] ?? '');
+        $f['City'] = trim($row['City'] ?? '');
+        $f['State'] = trim($row['State'] ?? '');
+        $f['Zip'] = trim($row['Zip'] ?? '');
+        $f['PhoneNumber'] = trim($row['PhoneNumber'] ?? '');
+        $f['Message'] = trim($row['Message'] ?? '');
+        $f['Email'] = trim($row['Email'] ?? '');
+        $f['PetType'] = trim($row['PetType'] ?? '');
+        $f['Breed'] = trim($row['Breed'] ?? '');
+        $f['PetName'] = trim($row['PetName'] ?? '');
+        $f['NeuteredOrSpayed'] = trim($row['NeuteredOrSpayed'] ?? '');
+        $myTime = strtotime(trim($row['PetBirthday'] ?? '')); 
+        $f['PetBirthday'] = date("Y-m-d H:i:s", $myTime);
+      } catch (PDOException $e) {
+        logError($e, true);
+      }
+  }else{
+    $f['FirstName'] = trim($_POST['FirstName'] ?? '');
+    $f['LastName'] = trim($_POST['LastName'] ?? '');
+    $f['Address'] = trim($_POST['Address'] ?? '');
+    $f['City'] = trim($_POST['City'] ?? '');
+    $f['State'] = trim($_POST['State'] ?? '');
+    $f['Zip'] = trim($_POST['Zip'] ?? '');
+    $f['PhoneNumber'] = trim($_POST['PhoneNumber'] ?? '');
+    $f['Message'] = trim($_POST['Message'] ?? '');
+    $f['Email'] = trim($_POST['Email'] ?? '');
+    $f['PetType'] = trim($_POST['PetType'] ?? '');
+    $f['Breed'] = trim($_POST['Breed'] ?? '');
+    $f['PetName'] = trim($_POST['PetName'] ?? '');
+    $f['NeuteredOrSpayed'] = trim($_POST['NeuteredOrSpayed'] ?? '');
+    $myTime = strtotime(trim($_POST['PetBirthday'] ?? '')); 
+    $f['PetBirthday'] = date("Y-m-d H:i:s", $myTime);
+  }
 
   if (isset($_POST['save'])) {
     $errors = [];
-
     // Validate Form Entries
-    // if (!$f['first-name']) {
-    //   $errors[] = 'You must enter a first name.';
-    // }
-
-    // if (!$f['last-name']) {
-    //   $errors[] = 'You must enter a last name.';
-    // }
-
-    // if (!$f['username'] || strlen($f['username']) < 8) {
-    //   $errors[] = 'Your username must be at least 8 characters.';
-    // }
-
-    // if (!$f['email']) {
-    //   $errors[] = 'Email is required.';
-    // } elseif (!filter_var($f['email'], FILTER_VALIDATE_EMAIL)) {
-    //   $errors[] = 'Email is not valid.';
-    // }
-
-    // $passPhrase1 = $_POST['pass-phrase-1'];
-    // $passPhrase2 = $_POST['pass-phrase-2'];
-    // if (strlen($passPhrase1) < 20) {
-    //   $errors[] = 'Your pass phrase must be at least 20 characters.';
-    // } elseif ($passPhrase1 !== $passPhrase2) {
-    //   $errors[] = 'Your pass phrases don\'t match.';
-    // }
-
     if (!$errors) {
-      // Insert Grooming
-      $qInserts = "INSERT INTO grooming(FirstName, LastName, Address, City, State, Zip, 
-      PhoneNumber, Email, PetType, Breed, PetName, NeuteredOrSpayed, PetBirthday) 
-      VALUES (:FirstName, :LastName, :Address, :City, :State, :Zip, 
-      :PhoneNumber, :Email, :PetType, :Breed, :PetName, :NeuteredOrSpayed, :PetBirthday)";
-        
+      // Update Grooming
+      if($_REQUEST['editId']){
+        $qInserts = "UPDATE grooming SET FirstName=:FirstName,LastName=:LastName,
+        Address=:Address,City=:City,State=:State,Zip=:Zip,PhoneNumber=:PhoneNumber,
+        Email=:Email,PetType=:PetType,Breed=:Breed,PetName=:PetName,NeuteredOrSpayed=:NeuteredOrSpayed,PetBirthday=:PetBirthday
+        WHERE GroomingID =".$_REQUEST['editId'];
+      }
+      //Insert
+      else{
+        $qInserts = "INSERT INTO grooming(FirstName, LastName, Address, City, State, Zip, 
+        PhoneNumber, Email, PetType, Breed, PetName, NeuteredOrSpayed, PetBirthday) 
+        VALUES (:FirstName, :LastName, :Address, :City, :State, :Zip, 
+        :PhoneNumber, :Email, :PetType, :Breed, :PetName, :NeuteredOrSpayed, :PetBirthday)";
+      }
       try {
         $stmtInserts = $db->prepare($qInserts);
         $stmtInserts->bindParam(':FirstName', $f['FirstName']);
@@ -86,23 +95,32 @@
       if (!$errors) { // If there are still no errors
         // show notification message
         //Redirect to grooming get to reset the form
-        header('location:'.$_SERVER['PHP_SELF'].'?status=ok&msg=The Grooming have been saved successfully!');
+        if(isset($_REQUEST['editId'])){
+            header('location:groomings.php?status=ok&msg=The Grooming have been updated  successfully!');
+        }else{
+            header('location:'.$_SERVER['PHP_SELF'].'?status=ok&msg=The Grooming have been saved successfully!');
+        }
       }
     }
   }
 ?>
 
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <?php
-    if(isset($_REQUEST['msg']) and $_REQUEST['status']=="ok"){
-        echo	'<div class="alert alert-success"><i class="fa fa-exclamation-triangle"></i>'.$_REQUEST['msg'].'!</div>';
-      }
-  ?>
-  <h1 class="display-4">Grooming</h1>
-</div>
+<div class="container-fluid">
+  <div class="row">
+ <?php 
+  require 'includes/nav.php';
+    ?>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <?php
+        if(isset($_REQUEST['msg']) and $_REQUEST['status']=="ok"){
+            echo	'<div class="alert alert-success"><i class="fa fa-exclamation-triangle"></i>'.$_REQUEST['msg'].'!</div>';
+        }
+    ?>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Create a New Grooming</h1>
+      </div>
 
-<div class="container">
-    <form id = "groomingFrom"  method="post" action="grooming.php">
+    <form id = "groomingFrom"  method="post" action="create.php<?php if(isset($_REQUEST['editId'])) echo "?editId=".$_REQUEST['editId'];?>">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="firstname">First Name*</label>
@@ -201,34 +219,11 @@
               </div>
           </div>
         </div>  
-        <button name="save" class="btn btn-primary">Save</button>
-    </form>
+        <button name="save" class="btn btn-primary float-right"><?php echo (isset($_REQUEST['editId']) ? "Update" : "Save");?></button>
+        </form>
+
+    </main>
+  </div>
 </div>
-
-<?php
-  require 'includes/footer.php';
-?>
-
-  <script>
-
-      $(function() {
-        var $select1 = $( '#PetType' );
-        var		$select2 = $( '#Breed' );
-        var   $options = $select2.find( 'option' );
-            
-        $select1.on( 'change', function() {
-          $select2.html( $options.filter( '[value="' + this.value + '"]' ) );
-        } ).trigger( 'change' );
-
-
-        $('#PetBirthday').datepicker({
-              uiLibrary: 'bootstrap4',
-          });
-
-          $("#groomingFrom").validate();
-        });
-
-        
-  </script>
 </body>
 </html>

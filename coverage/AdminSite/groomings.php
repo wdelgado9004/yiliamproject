@@ -1,19 +1,12 @@
 <?php
-  $pageTitle = 'Admin Home';
+  $pageTitle = 'Grooming List';
   require 'includes/header.php';
 
   $offset = $_GET['offset'] ?? 0;
   $offset = (int) $offset;
-  $rowsToShow = 2;
+  $rowsToShow = 3;
 
   $order = $_GET['order'] ?? 'GroomingID';
-//   $orderAllowed = ['date_registered',
-//                   'last_name',
-//                   'username',
-//                   'num_poems'];
-//   if (!in_array($order, $orderAllowed)) {
-//     $order = 'date_registered';
-//   }
   
   $dir = $_GET['dir'] ?? 'asc';
   $dirAllowed = ['asc', 'desc'];
@@ -55,37 +48,6 @@
   $prev = $href . "offset=$prevOffset&order=$order&dir=$dir";
   $next = $href . "offset=$nextOffset&order=$order&dir=$dir";
 
-  /* CONSTRUCT THE LINKS FOR THE HEADERS */
-
-  // Default all directions to ascending
-  $dirName = 'asc';
-  $dirUsername = 'asc';
-  $dirNumPoems = 'asc';
-  $dirRegistered = 'asc';
-
-  // If the current direction is 'asc', switch the direction
-  //  for the header that is currently being sorted on
-  if ($dir === 'asc') {
-    switch ($order) {
-      case 'last_name':
-        $dirName = 'desc';
-        break;
-      case 'username':
-        $dirUsername = 'desc';
-        break;
-      case 'num_poems':
-        $dirNumPoems = 'desc';
-        break;
-      case 'date_registered':
-        $dirRegistered = 'desc';
-        break;
-    }
-  }
-
-//   $nameLink = $href . "order=last_name&dir=$dirName";
-//   $usernameLink = $href . "order=username&dir=$dirUsername";
-//   $poemsLink = $href . "order=num_poems&dir=$dirNumPoems";
-//   $registeredLink = $href . "order=date_registered&dir=$dirRegistered";
 ?>
 
 <div class="container-fluid">
@@ -97,6 +59,7 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Grooming List</h1>
       </div>
+      <a class="btn btn-primary mb-2 float-right" href="create.php" role="button">Add New Grooming</a>
       <table class="table table-sm table-hover">
       <caption>Total Grooming Requests: <?= $groomingsCount ?></caption>
       <thead>
@@ -124,7 +87,7 @@
          <td><?php echo $row['Email'];?></td>
          <td><?php echo $row['PetType'];?></td>
          <td>
-            <a class="p-2" href="contact.php"><i class="fa fa-fw fa-edit"></i></a>
+            <a class="p-2" href="create.php?editId=<?php echo $row['GroomingID'];?>"><i class="fa fa-fw fa-edit"></i></a>
             <a class="p-2" href="contact.php"><i class="fa fa-fw fa-trash"></i></a>
         </td>
       </tr>
@@ -147,5 +110,26 @@
     </main>
   </div>
 </div>
+<script>
+
+      $(function() {
+        var $select1 = $( '#PetType' );
+        var		$select2 = $( '#Breed' );
+        var   $options = $select2.find( 'option' );
+            
+        $select1.on( 'change', function() {
+          $select2.html( $options.filter( '[value="' + this.value + '"]' ) );
+        } ).trigger( 'change' );
+
+
+        $('#PetBirthday').datepicker({
+              uiLibrary: 'bootstrap4',
+          });
+
+          $("#groomingFrom").validate();
+        });
+
+        
+  </script>
 </body>
 </html>
