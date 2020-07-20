@@ -24,7 +24,8 @@
         <ul class="list-unstyled mt-3 mb-4">
                 <img src="images/newarrivals.jpeg" alt="Logo" style="width:200px;" >
         </ul>
-        <a class="p-2 text-dark" href="newarrivals.php">View All</a>
+        <a class="btn btn-lg btn-primary" href="newarrivals.php" role="button">View All</a>
+        
        
       </div>
     </div>
@@ -37,7 +38,7 @@
         <ul class="list-unstyled mt-3 mb-4">
                 <img src="images/bestsellers.jpeg" alt="Logo" style="width:300px;" >
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">View All</button>
+        <a class="btn btn-lg btn-primary" href="bestseller.php" role="button">View All</a>
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -49,7 +50,7 @@
         <ul class="list-unstyled mt-3 mb-4">
                 <img src="images/food.jpeg" alt="Logo" style="width:300px;" >
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">View All</button>
+        <a class="btn btn-lg btn-primary" href="food.php" role="button">View All</a>
       </div>
     </div>
   </div>
